@@ -15,11 +15,6 @@ body {
 	margin-top: 20px;
 }
 
-.card {
-	height: 50%;
-	width: 50%;
-}
-
 #movieTitle
 {
 	font-size: 14px;
@@ -31,3 +26,12 @@ body {
 	margin: 0;
 }
 
+.card-body {
+	padding: .5rem;
+}
+
+.card-footer {
+	margin-left:auto;
+	margin-right: auto;
+	border: 0;
+}
