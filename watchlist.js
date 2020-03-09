@@ -20,5 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
  
      return watchlistHtml;
  }
+    //If I run it like this: I get the error movieArray.map is not a function
+    //renderWatchlist(localStorage.getItem(`watchlist`));
+    //If I run it like this, I get the error: Cannot read property 'map' of undefined
+   //renderWatchlist();
     console.log(localStorage.getItem(`watchlist`))  
  });
