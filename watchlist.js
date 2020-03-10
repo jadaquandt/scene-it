@@ -1,21 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var getWatchlist = localStorage.getItem('watchlist');
-    var watchlist = JSON.parse(getWatchlist);
-
+    var getWatchlist = localStorage.getItem('fixedWatchlist');
+    var newWatchlist = JSON.parse(getWatchlist);
+    console.log(newWatchlist)
     function renderWatchlist(movieArray) {
      
-     var watchlistHtml = movieArray.map(currentMovie => {
+     var watchlistHtml = movieArray.map(watchlistMovie => {
           return `
      <div class="card mx-2 my-3 col-2">
-         <img id="poster" class="card-img-top" src="${currentMovie.Poster}">
+         <img id="poster" class="card-img-top" src="${watchlistMovie.Poster}">
              <div class="card-body">
-                         <h5 id="movieTitle" class="d-flex card-title">${currentMovie.Title}</h5>
-                         <span class="date badge badge-secondary">${currentMovie.Year}</span>
-             </div>
-             <div class="card-footer">
-                 <!--<footer id="buttonFooter">
-                 <button id="addButton" class="mx-auto btn btn-primary" onclick="saveToWatchlist('${currentMovie.imdbID}')" >Add</button>
-                 </footer>-->
+                         <h5 id="movieTitle" class="d-flex card-title">${watchlistMovie.Title}</h5>
+                         <span class="date badge badge-secondary">${watchlistMovie.Year}</span>
              </div>
      </div>`
      }).join("");
@@ -23,43 +18,9 @@ document.addEventListener('DOMContentLoaded', function () {
     return watchlistHtml;
     
  } 
-    //If I run it like this: I get the error watchlistHtml is not defined
-    //renderWatchlist(watchlist);
-    //If I run it like this, I get the error: Cannot read property 'map' of undefined
-   //renderWatchlist();
-    //console.log(watchlistHtml) 
-    var moviesContainer = document.getElementById('watchlist-container');
-    moviesContainer.innerHTML = renderWatchlist(watchlist); 
+
+    var watchlistContainer = document.getElementById('watchlist-container');
+    watchlistContainer.innerHTML = renderWatchlist(newWatchlist); 
  });
 
- /*Part 3 Below */
- /*
-
-    var moviesContainer = document.getElementById('movies-container');
-    //var searchBar = document.getElementById('search-form')//
-    var searchString = document.getElementById('search-value').value;
-
-    searchString.addEventListener('submit', function(e){
-//Create another variable called urlEncodedSearchString. Set it equal to encodeURIComponent()..In the same line, pass in searchString as the parameter. You should end up with a line like: var urlEncodedSearchString = encodeURIComponent(searchString);//
-    var urlEncodedSearchString = encodeURIComponent(searchString);
-
-        axios.get('http://www.omdbapi.com/?apikey=99388fdd&s=' + urlEncodedSearchString)
-        .then(function(response){
-            console.log(response.data);
-            movieHtml = renderMovies(response.data.Search);
-            moviesContainer.innerHTML = movieHTML;
-    })
-
-
-    var newArray = [];
-
-if (searchString !=""){
-    newArray = movieData.filter(movie => {
-        var movieTitle = movie.Title.toUpperCase();
-
-        return movieTitle.includes(searchString);
-    })}
-   // e.target.elements[0].value = "";
-
-// moviesContainer.innerHTML = renderMovies(newArray); //
-}) */
+ 

@@ -27,26 +27,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }).join("");
 
     return movieHtml;
-}
+}       
         var moviesContainer = document.getElementById('movies-container');
-        var searchBar = document.getElementById('search-form')
+        var searchBar = document.getElementById('search-form');
         
         searchBar.addEventListener('submit', function(e){
             e.preventDefault();
     
-            var searchString = e.target.elements[0].value.toUpperCase();
+            var searchString = document.getElementById('search-value').value;
+            //Create another variable called urlEncodedSearchString. Set it equal to encodeURIComponent()..In the same line, pass in searchString as the parameter. You should end up with a line like: var urlEncodedSearchString = encodeURIComponent(searchString);//
+            var urlEncodedSearchString = encodeURIComponent(searchString);
 
-            var newArray = [];
+            axios.get('http://www.omdbapi.com/?apikey=99388fdd&s=' + urlEncodedSearchString)
+                .then(function(response){
 
-        if (searchString !=""){
-            newArray = movieData.filter(movie => {
-                var movieTitle = movie.Title.toUpperCase();
-
-                return movieTitle.includes(searchString);
-            })}
-            e.target.elements[0].value = "";
-
-        moviesContainer.innerHTML = renderMovies(newArray); 
+                    var movieHtml = renderMovies(response.data.Search);
+                    moviesData = response.data.Search;
+                    moviesContainer.innerHTML = movieHtml;
+                })
 })
 
 });
@@ -56,11 +54,11 @@ function saveToWatchlist(imdbID){
 //2)In saveToWatchlist, create a variable called movie which will contain the rest of this movie’s data.
 //3)We’ll use the Array prototype method find() to pull the rest of the movie data from data.js:  
 
-    var movie = movieData.find(function(currentMovie){
+    var movie = moviesData.find(function(currentMovie){
         return currentMovie.imdbID == imdbID;
     });
 //In the next line (still inside saveToWatchlist), pull down the watchlist from local storage
-        var watchlistJSON = localStorage.getItem('watchlist');
+        var watchlistJSON = localStorage.getItem('fixedWatchlist');
 //Parse the watchlist with JSON
         var watchlist = JSON.parse(watchlistJSON);
 //Use an if-statement to check if the watchlist is null, If it is null, set watchlist to an empty array
@@ -72,8 +70,7 @@ function saveToWatchlist(imdbID){
 //Turn the watchlist back into JSON
         watchlistJSON = JSON.stringify(watchlist);
 //Save the JSONified watchlist back into local storage
-        localStorage.setItem('watchlist', watchlistJSON);
+        localStorage.setItem('fixedWatchlist', watchlistJSON);
 
-       // console.log(watchlist)
+       console.log(watchlist)
 }
-
