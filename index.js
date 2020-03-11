@@ -12,22 +12,21 @@ document.addEventListener('DOMContentLoaded', function () {
     
     var movieHtml = movieArray.map(currentMovie => {
          return `
-    <div class="card mx-2 my-3 col-2">
+    <div class="card mx-2 my-3 col-lg-2 col-md-2 col-sm-4">
         <img id="poster" class="card-img-top" src="${currentMovie.Poster}">
             <div class="card-body">
                         <h5 id="movieTitle" class="d-flex card-title">${currentMovie.Title}</h5>
-                        <span class="date badge badge-secondary">${currentMovie.Year}</span>
+                        <span class="date badge badge-dark">${currentMovie.Year}</span>
             </div>
             <div class="card-footer">
-                <footer id="buttonFooter">
-                <button id="addButton" class="mx-auto btn btn-primary" onclick="saveToWatchlist('${currentMovie.imdbID}')" >Add</button>
-                </footer>
+                <button id="addButton" type="button" class="mx-auto btn btn-dark btn-sm" onclick="saveToWatchlist('${currentMovie.imdbID}')">Add</button>
             </div>
     </div>`
     }).join("");
 
     return movieHtml;
 }       
+        
         var moviesContainer = document.getElementById('movies-container');
         var searchBar = document.getElementById('search-form');
         
@@ -48,6 +47,8 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 });
+
+let button = document.getElementById("addButton");
 
 function saveToWatchlist(imdbID){
 //1) saveToWatchlist has a parameter called imdbID which will tell us which movie the user clicked on. We’ll use it to sift through movieData.js to find the relevant movie information.

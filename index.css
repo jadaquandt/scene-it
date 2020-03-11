@@ -1,14 +1,48 @@
-body {
-	background-color: rgb(211, 237, 247);
+body { 
+	background: url("/felix-mooneeram-evlkOfkQ5rE-unsplash.jpg") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  }
+
+a {
+	color: silver;
+	text-decoration: underline;
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+a:hover {
+	color: #792023
 }
 
 .header h2 {
-	color: #DC4247;
-	font-family: Helvetica, sans-serif;
+	color: white;
+	text-transform: uppercase;
+	font-family: 'Bebas Neue', cursive;
+	text-shadow: 4px 1px #B32312;
+	letter-spacing: 8px;
+	font-size: 130px;
 }
 
 .header p {
-	color: #50524F;
+	color: grey;
+	line-height: .3em;
+	font-size: 12px;
+}
+
+.header {
+	margin-bottom: 20px;
+}
+
+.card {
+	background-color: rgba(255, 255, 255, .8);
+}
+
+#addButton{
+	white-space: pre-wrap;
+	position: relative;
 }
 
 .results {
@@ -21,6 +55,11 @@ body {
 	margin: 0;
 	padding: 0;
 }
+#watchlistHeader{
+	color: #792023;
+	font-family: 'Bebas Neue', cursive;
+	margin-top: 0;
+}
 
 .date {
 	margin: 0;
@@ -28,6 +67,7 @@ body {
 
 .card-body {
 	padding: .5rem;
+	text-align: center;
 }
 
 .card-footer {
