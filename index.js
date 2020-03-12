@@ -6,9 +6,9 @@
 //Write a .map() loop on the movieArray parameter -- This anonymous function should have one parameter, you can call it currentMovie
 //Take the result of this .map() and save it to a variable called movieHTML
 
-
 document.addEventListener('DOMContentLoaded', function () {
-   function renderMovies(movieArray) {
+   
+    function renderMovies(movieArray) {
     
     var movieHtml = movieArray.map(currentMovie => {
          return `
@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 let button = document.getElementById("addButton");
+let moviesData;
 
 function saveToWatchlist(imdbID){
 //1) saveToWatchlist has a parameter called imdbID which will tell us which movie the user clicked on. We’ll use it to sift through movieData.js to find the relevant movie information.
@@ -73,5 +74,5 @@ function saveToWatchlist(imdbID){
 //Save the JSONified watchlist back into local storage
         localStorage.setItem('fixedWatchlist', watchlistJSON);
 
-       console.log(watchlist)
+      console.log(watchlist)
 }
