@@ -73,6 +73,4 @@ function saveToWatchlist(imdbID){
         watchlistJSON = JSON.stringify(watchlist);
 //Save the JSONified watchlist back into local storage
         localStorage.setItem('fixedWatchlist', watchlistJSON);
-
-      console.log(watchlist)
 }
